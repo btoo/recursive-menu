@@ -1,5 +1,5 @@
 <template>
-  <ul :class="{active, parent}">
+  <ul :class="directoryLevel(directory)">
     <template v-if="directory.children">
       <li v-for="childDirectory in directory.children" :key="childDirectory.path" class="item item--directory">
         <a href="#" @click="viewChildDirectory(childDirectory)">{{childDirectory.name}}</a>
@@ -15,6 +15,8 @@
 </template>
 
 <script>
+import {mapGetters} from 'vuex'
+
 export default {
   name: 'directory',
   props: ['directory'],
@@ -24,7 +26,10 @@ export default {
     },
     parent(){
       return this.directory === this.$store.state.parentDirectory
-    }
+    },
+    ...mapGetters([
+      'directoryLevel'
+    ])
   },
   methods: {
     viewChildDirectory(childDirectory){
@@ -43,15 +48,15 @@ export default {
     &.active {
       ul:not(.active){
         li {
-          display: none;
+          // display: none;
         }
       }
     }
   }
 
-  .parent, .ancestor {
-    > li > :not(.active) {
-      display: none;
-    }
-  }
+  // .parent, .ancestor {
+  //   > li > :not(.active) {
+  //     display: none;
+  //   }
+  // }
 </style>
