@@ -35,5 +35,9 @@ export default {
 </script>
 
 <style lang="scss">
-  
+  .nig {
+    &ga {
+      color: black;
+    }
+  }
 </style>

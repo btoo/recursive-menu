@@ -1,9 +1,8 @@
 const path = require('path')
-    , ExtractTextPlugin = require('extract-text-webpack-plugin')
-    , UglifyESPlugin = require('uglifyes-webpack-plugin')
+    , ClosureCompilerPlugin = require('webpack-closure-compiler')
 
 module.exports = {
-  entry: './main.js',
+  entry: './src/main.js',
   output: {
     path: __dirname,
     filename: 'build.js'
@@ -17,27 +16,28 @@ module.exports = {
   //   disableHostCheck: true
   // },
   plugins: [
-    new UglifyESPlugin({
-      compress: {
-        warnings: false
+    new ClosureCompilerPlugin({
+      compiler: {
+        language_in: 'ECMASCRIPT6',
+        language_out: 'ECMASCRIPT5',
+        compilation_level: 'SIMPLE'
       },
-      sourceMap: true
-    }),
-    new ExtractTextPlugin({
-      filename: `style.css`
+      concurrency: 3,
     }),
   ],
   module: {
     rules: [{
       test: /\.js$/,
       exclude: /node_modules/,
+      include: [path.resolve(__dirname, 'app/src')], // make src the root of transpiling, so if your problematic code is under anywhere in src/ Babel will pick it up.
       use: [{
         loader: 'babel-loader',
         options: {
-          presets: ['env'],
-          plugins: ['transform-object-rest-spread']
-          // presets: ['es2015'],
-          // plugins: ['transform-runtime']
+          presets: [
+            'env',
+            ["es2015", {"modules": false}]
+          ],
+          plugins: ['transform-runtime', 'transform-object-rest-spread']
         }
       }]
     }, {
