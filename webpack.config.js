@@ -1,4 +1,6 @@
 const path = require('path')
+    , ExtractTextPlugin = require('extract-text-webpack-plugin')
+    , UglifyESPlugin = require('uglifyes-webpack-plugin')
 
 module.exports = {
   entry: './main.js',
@@ -15,7 +17,15 @@ module.exports = {
   //   disableHostCheck: true
   // },
   plugins: [
-
+    new UglifyESPlugin({
+      compress: {
+        warnings: false
+      },
+      sourceMap: true
+    }),
+    new ExtractTextPlugin({
+      filename: `style.css`
+    }),
   ],
   module: {
     rules: [{

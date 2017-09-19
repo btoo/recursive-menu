@@ -35,8 +35,11 @@
     "webpack-dev-server": "^2.8.2"
   },
   "dependencies": {
+    "extract-text-webpack-plugin": "^3.0.0",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",
+    "uglify-js-es6": "^2.8.9",
+    "uglifyes-webpack-plugin": "^0.4.3",
     "vue": "^2.4.4",
     "vue-template-compiler": "^2.4.4",
     "vuex": "^2.4.0"
