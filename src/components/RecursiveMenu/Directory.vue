@@ -28,16 +28,30 @@ export default {
   },
   methods: {
     viewChildDirectory(childDirectory){
-      this.$store.commit('VIEW_CHILD_DIRECTORY', childDirectory)
+      this.active && this.$store.commit('VIEW_CHILD_DIRECTORY', childDirectory)
     }
   }
 }
 </script>
 
 <style lang="scss">
-  .nig {
-    &ga {
-      color: black;
+  ul {
+    // position: absolute;
+    // top: 0;
+    // left: 0;
+
+    &.active {
+      ul:not(.active){
+        li {
+          display: none;
+        }
+      }
+    }
+  }
+
+  .parent, .ancestor {
+    > li > :not(.active) {
+      display: none;
     }
   }
 </style>

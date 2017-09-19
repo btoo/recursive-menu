@@ -1,5 +1,5 @@
 <template>
-  <ul id="recursive-menu">
+  <section id="recursive-menu">
     
     <template v-if="$store.state.parentDirectory">
       parent: {{$store.state.parentDirectory.path}}
@@ -14,8 +14,10 @@
 
     <h1>{{name}}</h1>
     <h2>{{path}}</h2>
-    <directory :directory="$store.state.rootDirectory"></directory>
-  </ul>
+    <nav>
+      <directory :directory="$store.state.rootDirectory"></directory>
+    </nav>
+  </section>
 </template>
 
 <script>
@@ -30,3 +32,9 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+  nav {
+    position: relative;
+  }
+</style>
