@@ -40,23 +40,40 @@ export default {
 </script>
 
 <style lang="scss">
-  ul {
-    // position: absolute;
-    // top: 0;
-    // left: 0;
+  // ul {
+  //   // position: absolute;
+  //   // top: 0;
+  //   // left: 0;
 
-    &.active {
-      ul:not(.active){
-        li {
-          // display: none;
-        }
-      }
-    }
-  }
+  //   &.active {
+  //     ul:not(.active){
+  //       li {
+  //         // display: none;
+  //       }
+  //     }
+  //   }
+  // }
 
   // .parent, .ancestor {
   //   > li > :not(.active) {
   //     display: none;
   //   }
   // }
+
+  .active {
+    > li > ul {
+      display: none;
+    }
+  }
+
+  .parent, .ancestor {
+    // > ul:not(.active){
+    //   display: none;
+    // }
+  }
+
+  .inactive {
+    display: none;
+  }
+
 </style>
