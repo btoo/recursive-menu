@@ -1,24 +1,33 @@
+const path = require('path')
+
 module.exports = {
   entry: './main.js',
   output: {
     path: __dirname,
     filename: 'build.js'
   },
+  resolve: {
+    alias: {
+      vue: 'vue/dist/vue.js'
+    }
+  },
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.js$/,
-        loader: 'babel',
-        exclude: /node_modules/
+        exclude: /node_modules/,
+        use: [{
+          loader: 'babel-loader',
+          options: {
+            presets: ['es2015'],
+            plugins: ['transform-runtime']
+          }
+        }]
       },
       {
         test: /\.vue$/,
-        loader: 'vue'
+        use: 'vue-loader'
       }
     ]
-  },
-  babel: {
-    presets: ['es2015'],
-    plugins: ['transform-runtime']
   }
 }

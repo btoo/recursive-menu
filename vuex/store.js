@@ -1,11 +1,15 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import rootDirectory from './test-directory'
 
 Vue.use(Vuex)
 
 const state = {
   notes: [],
-  activeNote: {}
+  activeNote: {},
+  rootDirectory,
+  activeDirectory: rootDirectory,
+  parentDirectory: null
 }
 
 const mutations = {
@@ -33,6 +37,10 @@ const mutations = {
 
   SET_ACTIVE_NOTE (state, note) {
     state.activeNote = note
+  },
+
+  SET_ACTIVE_DIRECTORY (state, parent, child) {
+    state.activeDirectory = child
   }
 }
 

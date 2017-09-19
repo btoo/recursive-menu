@@ -4,6 +4,7 @@ import App from './components/App.vue'
 
 new Vue({
   store, // inject store to all children
-  el: 'body',
+  el: 'main',
+  template: '<App/>',
   components: { App }
 })

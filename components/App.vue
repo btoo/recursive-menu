@@ -1,8 +1,9 @@
 <template>
   <div id="app">
-    <toolbar></toolbar>
+    <recursive-menu></recursive-menu>
+    <!-- <toolbar></toolbar>
     <notes-list></notes-list>
-    <editor></editor>
+    <editor></editor> -->
   </div>
 </template>
 
@@ -10,12 +11,14 @@
 import Toolbar from './Toolbar.vue'
 import NotesList from './NotesList.vue'
 import Editor from './Editor.vue'
+import RecursiveMenu from './RecursiveMenu/index.vue'
 
 export default {
   components: {
     Toolbar,
     NotesList,
-    Editor
+    Editor,
+    RecursiveMenu
   }
 }
 </script>
