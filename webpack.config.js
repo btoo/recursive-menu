@@ -14,25 +14,31 @@ module.exports = {
   // devServer: {
   //   disableHostCheck: true
   // },
+  plugins: [
+
+  ],
   module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        use: [{
-          loader: 'babel-loader',
-          options: {
-            presets: ['env'],
-            plugins: ['transform-object-rest-spread']
-            // presets: ['es2015'],
-            // plugins: ['transform-runtime']
-          }
-        }]
-      },
-      {
-        test: /\.vue$/,
-        use: 'vue-loader'
+    rules: [{
+      test: /\.js$/,
+      exclude: /node_modules/,
+      use: [{
+        loader: 'babel-loader',
+        options: {
+          presets: ['env'],
+          plugins: ['transform-object-rest-spread']
+          // presets: ['es2015'],
+          // plugins: ['transform-runtime']
+        }
+      }]
+    }, {
+      test: /\.vue$/,
+      loader: 'vue-loader',
+      options: {
+        loaders: {
+          scss: 'vue-style-loader!css-loader!sass-loader', // <style lang="scss">
+          sass: 'vue-style-loader!css-loader!sass-loader?indentedSyntax' // <style lang="sass">
+        }
       }
-    ]
+    }]
   }
 }

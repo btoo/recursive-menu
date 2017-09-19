@@ -1,14 +1,16 @@
 <template>
   <ul id="recursive-menu">
     
-    active: {{$store.state.activeDirectory.path}}
-    <br>
     <template v-if="$store.state.parentDirectory">
       parent: {{$store.state.parentDirectory.path}}
+      <br>
+    </template>
+    active: {{$store.state.activeDirectory.path}}
+    
+    <template v-if="$store.state.parentDirectory">
       <br><br>
       <a href="#" @click="$store.commit('VIEW_PARENT_DIRECTORY')">view parent</a>
     </template>
-    
 
     <h1>{{name}}</h1>
     <h2>{{path}}</h2>

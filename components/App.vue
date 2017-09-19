@@ -8,16 +8,16 @@
 </template>
 
 <script>
-import Toolbar from './Toolbar.vue'
-import NotesList from './NotesList.vue'
-import Editor from './Editor.vue'
+// import Toolbar from './Toolbar.vue'
+// import NotesList from './NotesList.vue'
+// import Editor from './Editor.vue'
 import RecursiveMenu from './RecursiveMenu/index.vue'
 
 export default {
   components: {
-    Toolbar,
-    NotesList,
-    Editor,
+    // Toolbar,
+    // NotesList,
+    // Editor,
     RecursiveMenu
   }
 }

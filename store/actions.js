@@ -17,8 +17,3 @@ export const updateActiveNote = ({ dispatch }, note) => {
 export const toggleFavorite = ({ dispatch }) => {
   dispatch('TOGGLE_FAVORITE')
 }
-
-export const setActiveDirectory = ({ dispatch }, newActiveDirectory) => {
-  console.log('in actions', newActiveDirectory)
-  dispatch('SET_ACTIVE_DIRECTORY', newActiveDirectory)
-}

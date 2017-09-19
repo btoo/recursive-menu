@@ -1,19 +1,5 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import rootDirectory from './test-directory'
+export default {
 
-Vue.use(Vuex)
-
-const state = {
-  notes: [],
-  activeNote: {},
-  rootDirectory,
-  activeDirectory: rootDirectory,
-  parentDirectory: null,
-  breadcrumbs: [rootDirectory]
-}
-
-const mutations = {
   ADD_NOTE (state) {
     const newNote = {
       text: 'New note',
@@ -49,7 +35,6 @@ const mutations = {
     state.parentDirectory = state.activeDirectory
     state.activeDirectory = childDirectory
     state.breadcrumbs.push(childDirectory)
-    console.log(state.breadcrumbs.map(b => b.path))
   },
   
   VIEW_PARENT_DIRECTORY(state){
@@ -57,13 +42,6 @@ const mutations = {
     const breadcrumbsLength = state.breadcrumbs.length
     state.parentDirectory = state.breadcrumbs[breadcrumbsLength - 2]
     state.activeDirectory = state.breadcrumbs[breadcrumbsLength - 1]
-    console.log(state.breadcrumbs.map(b => b.path))
   }
 
-
 }
-
-export default new Vuex.Store({
-  state,
-  mutations
-})
