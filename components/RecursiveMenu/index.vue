@@ -1,8 +1,18 @@
 <template>
   <ul id="recursive-menu">
-    <h1>{{rootDirectory.name}}</h1>
-    <h2>{{rootDirectory.path}}</h2>
-    <directory :directory="rootDirectory"></directory>
+    
+    active: {{$store.state.activeDirectory.path}}
+    <br>
+    <template v-if="$store.state.parentDirectory">
+      parent: {{$store.state.parentDirectory.path}}
+      <br><br>
+      <a href="#" @click="$store.commit('VIEW_PARENT_DIRECTORY')">view parent</a>
+    </template>
+    
+
+    <h1>{{name}}</h1>
+    <h2>{{path}}</h2>
+    <directory :directory="$store.state.rootDirectory"></directory>
   </ul>
 </template>
 
@@ -13,10 +23,8 @@ export default {
   components: {
     Directory
   },
-  computed: {
-    rootDirectory(){
-      return this.$store.state.rootDirectory
-    }
+  data(){
+    return this.$store.state.rootDirectory
   }
 }
 </script>

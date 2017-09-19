@@ -9,7 +9,8 @@ const state = {
   activeNote: {},
   rootDirectory,
   activeDirectory: rootDirectory,
-  parentDirectory: null
+  parentDirectory: null,
+  breadcrumbs: [rootDirectory]
 }
 
 const mutations = {
@@ -39,9 +40,27 @@ const mutations = {
     state.activeNote = note
   },
 
-  SET_ACTIVE_DIRECTORY (state, parent, child) {
-    state.activeDirectory = child
+  SET_ACTIVE_DIRECTORY (state, newActiveDirectory) {
+    state.parentDirectory = state.activeDirectory
+    state.activeDirectory = newActiveDirectory
+  },
+
+  VIEW_CHILD_DIRECTORY(state, childDirectory){
+    state.parentDirectory = state.activeDirectory
+    state.activeDirectory = childDirectory
+    state.breadcrumbs.push(childDirectory)
+    console.log(state.breadcrumbs.map(b => b.path))
+  },
+  
+  VIEW_PARENT_DIRECTORY(state){
+    state.breadcrumbs.pop()
+    const breadcrumbsLength = state.breadcrumbs.length
+    state.parentDirectory = state.breadcrumbs[breadcrumbsLength - 2]
+    state.activeDirectory = state.breadcrumbs[breadcrumbsLength - 1]
+    console.log(state.breadcrumbs.map(b => b.path))
   }
+
+
 }
 
 export default new Vuex.Store({

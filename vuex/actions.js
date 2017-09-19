@@ -18,6 +18,7 @@ export const toggleFavorite = ({ dispatch }) => {
   dispatch('TOGGLE_FAVORITE')
 }
 
-export const setActiveDirectory = ({ dispatch }, parent, child) => {
-  dispatch('SET_ACTIVE_DIRECTORY')
+export const setActiveDirectory = ({ dispatch }, newActiveDirectory) => {
+  console.log('in actions', newActiveDirectory)
+  dispatch('SET_ACTIVE_DIRECTORY', newActiveDirectory)
 }

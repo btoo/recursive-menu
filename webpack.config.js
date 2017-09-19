@@ -11,6 +11,9 @@ module.exports = {
       vue: 'vue/dist/vue.js'
     }
   },
+  // devServer: {
+  //   disableHostCheck: true
+  // },
   module: {
     rules: [
       {
@@ -19,8 +22,10 @@ module.exports = {
         use: [{
           loader: 'babel-loader',
           options: {
-            presets: ['es2015'],
-            plugins: ['transform-runtime']
+            presets: ['env'],
+            plugins: ['transform-object-rest-spread']
+            // presets: ['es2015'],
+            // plugins: ['transform-runtime']
           }
         }]
       },
