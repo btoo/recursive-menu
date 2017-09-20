@@ -1,10 +1,10 @@
 <template>
-  <div id="app">
+  <main id="app">
     <recursive-menu></recursive-menu>
     <!-- <toolbar></toolbar>
     <notes-list></notes-list>
     <editor></editor> -->
-  </div>
+  </main>
 </template>
 
 <script>

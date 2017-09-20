@@ -36,6 +36,7 @@
     "webpack-dev-server": "^2.8.2"
   },
   "dependencies": {
+    "autoprefixer": "^7.1.4",
     "complete-directory-tree": "^1.1.2",
     "node-sass": "^4.5.3",
     "sass-loader": "^6.0.6",

@@ -1,4 +1,4 @@
-# a recursive menu component built with vue
+# a menu/directory component built with recursive vue components and vuex
 
 ### Install the dependencies
 

@@ -1,0 +1,53 @@
+.directory {
+  list-style: none;
+  padding: 0;
+  position: absolute;
+  top: 0;
+  left: 22vh;
+  &.active {
+    > .item > .directory {
+      display: none;
+    }
+  }
+
+  &.inactive {
+    display: none;
+  }
+
+  &.ancestor, &.parent {
+    > .item:not(.opened){
+      pointer-events: none;
+    }
+  }
+}
+
+.item {
+  // position: relative;
+  &--directory {
+    > a {
+      display: inline-flex;
+      align-items: center;
+      &:before {
+        order: 88;
+        content: "\00a0";
+      }
+      &:after {
+        order: 888;
+        content: '';
+        display: inline-block;
+        height: 0;
+        border-style: solid;
+        line-height: 0px;
+        border-color: transparent transparent transparent #337ab7;
+        _border-color: #ffffff #ffffff #ffffff #337ab7;
+        _filter: progid:DXImageTransform.Microsoft.Chroma(color='#ffffff');
+        border-width: 3.8px 0 3.8px 3.8px;
+        position: relative;
+      }
+    }
+    &.opened {
+      // font-weight: bold;
+      text-decoration: underline;
+    }
+  }
+}
